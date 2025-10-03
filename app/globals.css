@@ -1,0 +1,729 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0b0b;
+  --card: #161616;
+  --muted: #9ca3af;
+}
+body {
+  @apply bg-[color:var(--bg)] text-white antialiased;
+}
+.container-page {
+  @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+}
+.card {
+  @apply bg-[color:var(--card)] rounded-2xl p-5 shadow-soft border border-white/5;
+}
+.btn {
+  @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 transition hover:opacity-90;
+}
+.btn-primary {
+  @apply bg-brand text-white;
+}
+.btn-ghost {
+  @apply bg-white/5;
+}
+.input,
+.select,
+.textarea {
+  @apply w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-brand/40;
+}
+.table {
+  @apply w-full text-sm;
+}
+.table th {
+  @apply text-left text-slate-300 font-medium pb-2;
+}
+.table td {
+  @apply py-2 border-t border-white/5 text-slate-200;
+}
+.badge {
+  @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs;
+}
+.badge-success {
+  @apply bg-gray-500/15 text-gray-300;
+}
+.badge-warning {
+  @apply bg-gray-500/15 text-gray-300;
+}
+.badge-danger {
+  @apply bg-gray-500/15 text-gray-300;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Badge styles */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-gray {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.badge-warning {
+  background-color: #e5e7eb;
+  color: #6b7280;
+}
+
+.badge-success {
+  background-color: #e5e7eb;
+  color: #6b7280;
+}
+
+/* Link style */
+
+.link {
+  color: #6b7280;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #4b5563;
+}
+
+/* Button styles */
+
+.btn {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: #6b7280;
+  border: 1px solid #6b7280;
+}
+
+.btn-ghost:hover {
+  background-color: #6b7280;
+  color: white;
+}
+
+.btn-danger {
+  background-color: transparent;
+  color: #9ca3af;
+  border: 1px solid #9ca3af;
+}
+
+.btn-danger:hover {
+  background-color: #9ca3af;
+  color: white;
+}
+
+/* Smooth transitions for modal */
+.fixed {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.bg-black\/30 {
+  backdrop-filter: blur(2px);
+}
+
+/* Button transitions */
+button {
+  transition: all 0.15s ease-in-out;
+}
+
+/* Konsistensi dengan styling website */
+.bg-slate-100 {
+  background-color: #f3f4f6;
+}
+
+.border-slate-200 {
+  border-color: #e5e7eb;
+}
+
+.border-slate-300 {
+  border-color: #d1d5db;
+}
+
+.text-slate-800 {
+  color: #111827;
+}
+
+.text-slate-600 {
+  color: #111827;
+}
+select {
+  background-color: #1f2937; /* warna slate-700 */
+  color: #ffffff; /* teks putih */
+  border: 1px solid #111827; /* border abu abu gelap */
+  border-radius: 0.375rem; /* rounding */
+  padding: 0.5rem 0.75rem;
+}
+
+select option {
+  background-color: #1f2937; /* agar opsi juga background gelap */
+  color: #ffffff; /* opsi teks putih */
+}
+
+/* === Monochrome Theme Extensions === */
+:root {
+  --bg: #0b0b0b;
+  --card: #161616;
+  --muted: #9ca3af;
+  --border: #2e2e2e;
+  --accent: #6b7280; /* neutral accent */
+  --accent-2: #9ca3af;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+
+  /* Status colors, toned to avoid clash */
+  --success: 160 20% 50%; /* desaturated green */
+  --warning: 45 25% 55%; /* desaturated yellow */
+  --danger: 350 25% 55%; /* desaturated red */
+}
+
+*::selection {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  @apply bg-[#1f1f1f] text-white placeholder-gray-400 border border-[#2e2e2e] rounded-md;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
+  border-color: #4b5563;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition;
+}
+.btn-primary {
+  @apply bg-[#2e2e2e] text-white hover:bg-[#1f1f1f] border border-[#2e2e2e];
+}
+.btn-muted {
+  @apply bg-[#1a1a1a] text-white hover:bg-black border border-[#2a2a2a];
+}
+
+.btn-success {
+  background-color: hsl(var(--success) / 0.18);
+  color: hsl(var(--success) / 0.88);
+  border: 1px solid hsl(var(--success) / 0.25);
+}
+.btn-success:hover {
+  background-color: hsl(var(--success) / 0.28);
+}
+
+.btn-warning {
+  background-color: hsl(var(--warning) / 0.18);
+  color: hsl(var(--warning) / 0.88);
+  border: 1px solid hsl(var(--warning) / 0.25);
+}
+.btn-warning:hover {
+  background-color: hsl(var(--warning) / 0.28);
+}
+
+.btn-danger {
+  background-color: hsl(var(--danger) / 0.18);
+  color: hsl(var(--danger) / 0.9);
+  border: 1px solid hsl(var(--danger) / 0.25);
+}
+.btn-danger:hover {
+  background-color: hsl(var(--danger) / 0.28);
+}
+
+/* Badges */
+.badge {
+  @apply px-2 py-1 rounded text-xs border;
+}
+.badge-success {
+  background-color: hsl(var(--success) / 0.15);
+  color: hsl(var(--success) / 0.8);
+  border-color: hsl(var(--success) / 0.25);
+}
+.badge-warning {
+  background-color: hsl(var(--warning) / 0.15);
+  color: hsl(var(--warning) / 0.85);
+  border-color: hsl(var(--warning) / 0.25);
+}
+.badge-danger {
+  background-color: hsl(var(--danger) / 0.15);
+  color: hsl(var(--danger) / 0.85);
+  border-color: hsl(var(--danger) / 0.25);
+}
+
+/* Sidebar active nav */
+.sidebar-active {
+  @apply bg-[#1f1f1f] text-white;
+}
+
+.menu-active::before {
+  box-shadow: none;
+}
+
+/* Button variants */
+.btn-secondary {
+  @apply bg-[#1a1a1a] text-[#e5e7eb] hover:bg-black border border-[#2a2a2a];
+}
+.btn-ghost {
+  @apply bg-transparent text-[#d1d5db] hover:bg-white/5 border border-transparent;
+}
+
+/* === Alive Monochrome Enhancements === */
+@layer utilities {
+  /* Floating animations */
+  @keyframes fx-float {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(12px);
+    }
+  }
+  .fx-float {
+    animation: fx-float 6s ease-in-out infinite alternate;
+  }
+  @keyframes fx-float-2 {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
+  .fx-float-2 {
+    animation: fx-float-2 7s ease-in-out infinite alternate;
+  }
+
+  /* Subtle moving grid */
+  .fx-grid {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px;
+    animation: fx-grid-move 30s linear infinite;
+  }
+  @keyframes fx-grid-move {
+    from {
+      background-position: 0px 0px, 0px 0px;
+    }
+    to {
+      background-position: 40px 40px, 40px 40px;
+    }
+  }
+
+  /* Grain/noise */
+  .fx-noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.30' /></svg>");
+  }
+
+  /* Focus ring refined */
+  .ring-focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06), 0 0 0 1px #4b5563 inset;
+  }
+
+  /* Depth tokens */
+  .shadow-soft {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  }
+  .shadow-card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+}
+
+.card {
+  @apply shadow-card;
+}
+
+/* Button micro-interactions */
+.btn {
+  @apply transition-transform;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* === Lively Monochrome ++ === */
+/* Ambient spotlight (follows cursor, very subtle) */
+.fx-ambient {
+  --x: 50vw;
+  --y: 40vh;
+  background: radial-gradient(
+    600px 600px at var(--x) var(--y),
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
+}
+
+/* Button sheen */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: -100% auto -100% -150%;
+  width: 120%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transition: transform 0.6s ease;
+}
+.btn-primary:hover::after {
+  transform: translateX(120%) rotate(20deg);
+}
+
+/* Subtle diagonal watermark pattern (for empty areas) */
+.fx-watermark {
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+}
+
+/* === Alive Monochrome Palette (layered neutrals) === */
+:root {
+  --bg: #0c0c0d;
+  --bg-1: #0f1012;
+  --bg-2: #15171a;
+  --bg-3: #1c1f23;
+  --card: #17191c;
+
+  --border-soft: #202327;
+  --border: #2a2e33;
+  --edge-hi: rgba(255, 255, 255, 0.06);
+  --edge-lo: rgba(0, 0, 0, 0.55);
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #c7c7c7;
+  --muted: #a0a0a0;
+
+  --accent: #6b7280;
+  --accent-2: #9ca3af;
+}
+/* Surfaces & buttons */
+.surface {
+  background: var(--bg-2);
+  border: 1px solid var(--border-soft);
+  box-shadow: inset 0 1px 0 var(--edge-hi);
+}
+.surface-2 {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 var(--edge-hi);
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 var(--edge-hi);
+}
+.btn-primary {
+  background-image: linear-gradient(to bottom, #2e2e2e, #242424);
+  color: #fff;
+  border: 1px solid #343434;
+}
+.btn-primary:hover {
+  background-image: linear-gradient(to bottom, #343434, #262626);
+}
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06), 0 0 0 1px #4b5563 inset;
+}
+.menu-active {
+  background: #2a2f35;
+  border-color: #343a40;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* === GPT Dark Neutral Palette (ChatGPT-like) === */
+:root {
+  /* Base neutrals */
+  --bg: #0e0f12; /* page background */
+  --bg-1: #121418; /* gradient start */
+  --bg-2: #1a1c20; /* mid surface */
+  --bg-3: #22262b; /* raised surface */
+  --card: #1e2227; /* cards */
+
+  /* Strokes */
+  --border-soft: #2a2f35;
+  --border: #343a40;
+
+  /* Text */
+  --text-primary: #ecedee;
+  --text-secondary: #b5bbc4;
+  --muted: #9aa3ae;
+
+  /* Subtle accents (for icons/lines) */
+  --accent: #565b61;
+  --accent-2: #6a7078;
+}
+
+/* Surfaces with GPT-like depth */
+.surface {
+  background: var(--bg-2);
+  border: 1px solid var(--border-soft);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.surface-2 {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(to bottom, #2a2f35, #22262b);
+  color: #fff;
+  border: 1px solid #343a40;
+}
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #2e343a, #262b31);
+}
+.btn-secondary {
+  background: #1a1c20;
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: #202226;
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* === GPT Dark Components === */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+.table thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: #20242a;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px;
+}
+.table tbody td {
+  padding: 12px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+.table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+}
+
+input,
+textarea,
+select {
+  background: #202226;
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06);
+  border-color: #3b4046;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #2a2f35;
+  border-radius: 8px;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* === ChatGPT-like sidebar tone === */
+.sidebar-shell {
+  background: linear-gradient(to bottom, var(--bg-2), var(--bg-3));
+  border-right: 1px solid var(--border-soft);
+}
+.sidebar-shell .logo-wrap {
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.06));
+}
+.sidebar-shell .copyright {
+  color: var(--muted);
+}
+
+/* === Custom Scrollbar (Chrome/Edge/Safari + Firefox) === */
+.nice-scrollbar {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+
+  /* Hindari layout shift saat scrollbar muncul */
+  scrollbar-gutter: stable both-edges;
+}
+
+/* WebKit */
+.nice-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+.nice-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.nice-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.nice-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+.nice-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
