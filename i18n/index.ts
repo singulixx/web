@@ -1,8 +1,18 @@
 import { id } from "./id";
 type Dict = typeof id;
-type Path<T> = T extends object ? { [K in keyof T]: `${K}` | `${K}.${Path<T[K]>}` }[keyof T] : never;
+
+// ⬇️ filter key agar hanya string (hindari symbol)
+type Path<T> = T extends object
+  ? {
+      [K in Extract<keyof T, string>]: `${K}` | `${K}.${Path<T[K]>}`;
+    }[Extract<keyof T, string>]
+  : never;
+
 const dict = id;
 
 export function t(path: Path<Dict>, fallback?: string) {
-  return path.split(".").reduce<any>((acc, k) => (acc && k in acc ? (acc as any)[k] : undefined), dict) ?? fallback ?? path;
+  const keys = String(path).split(".");
+  let cur: any = dict;
+  for (const k of keys) cur = cur?.[k];
+  return (cur as string) ?? fallback ?? path;
 }
