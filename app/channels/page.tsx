@@ -10,8 +10,7 @@ import Link from "next/link";
 
 type Store = { id: number; name: string; type?: string };
 
-// const BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/+$/, "");
-const BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://server-kohl-psi.vercel.app';
+const BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/+$/, "");
 
 type StatusMap = Record<
   number,
