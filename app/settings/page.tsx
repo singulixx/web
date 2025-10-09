@@ -20,7 +20,7 @@ export default function Page() {
           </div>
           <div>
             <label className="text-sm">API Base URL</label>
-            <input className="input mt-1" defaultValue={(process.env.NEXT_PUBLIC_API_BASE_URL||"").replace(/\/+$/, "")} />
+            <input className="input mt-1" defaultValue={(process.env.NEXT_PUBLIC_API_BASE_URL || 'https://server-kohl-psi.vercel.app')} />
           </div>
         </div>
       </div>

@@ -11,7 +11,8 @@ import Pagination from "@/components/ui/Pagination";
 
 type Store = { id: number; name: string; type?: string };
 
-const BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/+$/, "");
+// const BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/+$/, "");
+const BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://server-kohl-psi.vercel.app';
 
 export default function StoresPage() {
   const [page, setPage] = useState(1);

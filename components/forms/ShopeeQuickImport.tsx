@@ -18,7 +18,8 @@ interface Props {
   onImported?: () => void;
 }
 
-const BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+// const BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+const BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://server-kohl-psi.vercel.app';
 
 /**
  * Shopee Quick Import
