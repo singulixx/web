@@ -15,6 +15,7 @@ type Ball = {
   buyPrice?: number;
   status: "UNOPENED" | "OPENED" | "SORTED";
   docUrl?: string | null; // JSON string of string[] | single string
+  totalPcsOpened?: number | null; // ✅ tambahkan baris ini
 };
 
 const API_BASE = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/+$/, "");
@@ -117,6 +118,17 @@ export default function BallDetailPage() {
 
   return (
     <div className="space-y-4">
+      {/* READ-ONLY: Total PCS Dibuka (ditampilkan dari field totalPcsOpened) */}
+      <div className="mt-3">
+        <label className="text-sm text-muted-foreground">Total PCS Dibuka</label>
+        <div className="mt-1 flex items-center gap-3">
+          <div className="px-3 py-2 bg-surface rounded-md">
+            {ball?.totalPcsOpened ?? 0}
+          </div>
+          <p className="text-xs text-muted-foreground">Nilai ini diisi otomatis saat proses sortir selesai (A+B+Reject).</p>
+        </div>
+      </div>
+
 <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Detail Ball</h1>

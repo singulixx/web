@@ -14,6 +14,7 @@ export type BallForm = {
   hargaBeli?: number;
   status: BallStatus;
   docUrl?: string | null;
+  totalPcsOpened?: number | null
 };
 
 type Props = {
