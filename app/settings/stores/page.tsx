@@ -120,18 +120,20 @@ export default function StoresPage() {
 
   const connectShopee = async (id: number) => {
     try {
+      // find store to include name in payload
+      const store = stores.find((x) => x.id === id);
+      const payload = {
+        name: store?.name || `Store ${id}`,
+        type: "SHOPEE",
+      };
       const headers: HeadersInit | undefined = token
-        ? { Authorization: `Bearer ${token}` }
-        : undefined;
-      const res = await fetch(
-        `${BASE}/api/stores?limit=${pageSize}&skip=${
-          (page - 1) * pageSize
-        }/${id}/shopee/connect`,
-        {
-          method: "POST",
-          headers,
-        }
-      );
+        ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+        : { "Content-Type": "application/json" };
+      const res = await fetch(`${BASE}/api/stores/${id}/shopee/connect`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(payload),
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const js = await res.json().catch(() => ({}));
       if (js?.url) window.location.href = js.url;
