@@ -120,26 +120,31 @@ export default function StoresPage() {
 
   const connectShopee = async (id: number) => {
     try {
-      // find store to include name in payload
       const store = stores.find((x) => x.id === id);
-      const payload = {
-        name: store?.name || `Store ${id}`,
-        type: "SHOPEE",
-      };
-      const headers: HeadersInit | undefined = token
-        ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+      const payload = { name: store?.name || `Store ${id}`, type: "SHOPEE" };
+      const headers: HeadersInit = token
+        ? {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }
         : { "Content-Type": "application/json" };
+
       const res = await fetch(`${BASE}/api/stores/${id}/shopee/connect`, {
         method: "POST",
         headers,
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const js = await res.json().catch(() => ({}));
+
+      const text = await res.text();
+      console.log("Response status:", res.status);
+      console.log("Response text:", text);
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${text}`);
+      const js = JSON.parse(text || "{}");
       if (js?.url) window.location.href = js.url;
       else toast.success("Permintaan koneksi Shopee dikirim");
     } catch (e) {
-      console.error(e);
+      console.error("Connect Shopee error:", e);
       toast.error("Gagal memulai koneksi Shopee");
     }
   };
@@ -309,8 +314,13 @@ export default function StoresPage() {
           </div>
         </div>
       )}
-    
-<Pagination page={page} total={total} pageSize={pageSize} onPageChange={setPage} />
-</div>
+
+      <Pagination
+        page={page}
+        total={total}
+        pageSize={pageSize}
+        onPageChange={setPage}
+      />
+    </div>
   );
 }
